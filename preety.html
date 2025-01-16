@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For the Prettiest Girl</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .blue-box {
+      background-color: blue;
+      color: white;
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px;
+    }
+    .no-option {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      border: 1px solid white;
+      cursor: pointer;
+      position: absolute;
+    }
+    img {
+      width: 400px; /* Rectangle width */
+      height: 250px; /* Rectangle height */
+      object-fit: cover; /* Ensures the image fills the rectangle */
+      margin: 10px auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://i.postimg.cc/R01XHcw9/IMG-20241231-014033-348.jpg" alt="First Picture">
+    <p style="font-size: 20px;">Are you Areesha, the queen of cuteness?</p>
+    <button id="yesButton">Yes</button>
+  </div>
+
+  <div id="secondPage" class="container" style="display: none;">
+    <p style="font-size: 20px;">I have a very prominent question to ask: Would you answer?</p>
+    <button id="okayButton">Okay</button>
+  </div>
+
+  <div id="thirdPage" class="container" style="display: none; position: relative; height: 300px;">
+    <p style="font-size: 24px; font-weight: bold;">Do you think you are beautiful and cute?</p>
+    <div class="blue-box">Yes</div>
+    <div class="no-option" id="noOption">No</div>
+  </div>
+
+  <div id="finalPage" class="container" style="display: none;">
+    <img src="https://i.postimg.cc/NMgb75xX/IMG-20241231-014024-495.jpg" alt="Second Picture">
+    <p style="font-size: 24px; color: pink;">See, you really are very beautiful and cute, and you accept it. Wishing you a happy birthday and another year of your beauty, you cutie patooti!</p>
+  </div>
+
+  <script>
+    document.getElementById('yesButton').onclick = function() {
+      document.querySelector('.container').style.display = 'none';
+      document.getElementById('secondPage').style.display = 'block';
+    };
+
+    document.getElementById('okayButton').onclick = function() {
+      document.getElementById('secondPage').style.display = 'none';
+      document.getElementById('thirdPage').style.display = 'block';
+    };
+
+    document.getElementById('noOption').onclick = function() {
+      const noOption = document.getElementById('noOption');
+      const container = document.getElementById('thirdPage');
+      const maxX = container.offsetWidth - noOption.offsetWidth;
+      const maxY = container.offsetHeight - noOption.offsetHeight;
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+      noOption.style.left = randomX + "px";
+      noOption.style.top = randomY + "px";
+    };
+
+    document.querySelector('.blue-box').onclick = function() {
+      document.getElementById('thirdPage').style.display = 'none';
+      document.getElementById('finalPage').style.display = 'block';
+    };
+  </script>
+</body>
+</html>
